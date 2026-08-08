@@ -179,7 +179,7 @@ window.onload = async function () {
         }
 
         if (loopLength >= 100) {
-            loopLength -= 50;
+            loopLength -= 25;
         }
         if (hunger > 10 || sleep > 10 || fun > 10 || anger > 10 || bible > 10) {
             alert('PEPITO HAS DIED')
