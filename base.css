@@ -1,0 +1,341 @@
+/*
+	General styles
+
+	some practically general ones will be in the
+	Board styling section
+*/
+
+abbr {
+	cursor:help;
+}
+
+body {
+	margin:0;
+	padding:1em;
+	/*	If you want pixely images to get scaled cleanly,
+		un-comment these 'image-rendering' lines.
+		You need both 'crisp-edges' and 'pixelated'
+		to get decent browser support.
+	image-rendering:crisp-edges;
+	image-rendering:pixelated;
+	*/
+}
+
+img {
+	height:100%;	/*	resize to fill their container	*/
+	width:100%;		/*	resize to fill their container	*/
+	vertical-align:bottom;
+}
+
+/*	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+	Board styling
+
+	See readme.txt for a layout diagram
+	with IDs and classes labeled
+ */
+
+main#board {
+	display:grid;
+	grid-gap:2px;
+	grid-template-rows:auto;
+}
+
+@media screen and (orientation:landscape) {
+	main#board {
+		grid-template-columns:32em 32em;
+		grid-template-areas:
+			"perp 	view"
+			"msg	view";
+	}
+}
+
+@media screen and (orientation:portrait) {
+	main#board {
+		grid-template-columns:100%;
+		grid-template-areas:
+			"perp"
+			"msg"
+			"view";
+	}
+}
+
+main#board section.window {
+	background-color:lightgray;
+	border:2px outset lightgrey;
+	padding:2px;
+}
+
+main#board h1,
+main#board h2 {
+	border:2px groove lightgray;
+	display:inline-block;
+	font-size:1em;
+	margin:0;
+	margin-bottom:2px;
+	padding:0 1em;
+	text-transform:uppercase;
+}
+
+main#board h1 {
+	text-align:center;
+}
+
+main#board h2 {}
+
+/*	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+*/
+
+main#board section#view {
+	grid-area:view;
+	text-align:center;
+}
+
+main#board section#view section#map {
+	display:grid;
+	grid-gap:2px;
+	grid-template-columns:repeat(5, 1fr);
+	grid-template-rows:repeat(5, 1fr);
+}
+
+main#board section#view section#map section.cell {
+	border:1px inset lightgray;
+	padding:0;
+}
+
+/*	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+*/
+
+main#board section#perception {
+	grid-area:perp;
+}
+
+main#board section#perception section#senses {
+	display:grid;
+	grid-gap:2px;
+	grid-template-rows:repeat(2, 1fr);
+}
+
+@media screen and (orientation:landscape) {
+	main#board section#perception section#senses {
+		grid-template-columns:repeat(5, 1fr);
+	}
+}
+
+@media screen and (orientation:portrait) {
+	main#board section#perception section#senses {
+		grid-template-columns:repeat(5, 19.5%);
+	}
+}
+
+main#board section#perception section#senses section.icon {
+	border:1px outset lightgray;
+}
+
+main#board section#perception section#senses section.description {
+	border:1px inset lightgray;
+	color:black;
+	word-wrap:break-word;
+}
+
+/*	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+*/
+
+main#board section#message {
+	grid-area:msg;
+}
+
+main#board iframe {
+	border:1px inset lightgray;
+	margin:0;
+	padding:0;
+}
+
+@media screen and (orientation:landscape) {
+	main#board iframe {
+		height:15em;
+		width:31.4em;
+	}
+}
+
+@media screen and (orientation:portrait) {
+	main#board iframe {
+		width:100%;
+	}
+}
+
+/*	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+	Title screen styling
+*/
+
+@media screen and (orientation:landscape) {
+	main#titlescreen {
+		margin:0;
+		padding:0;
+		width:32em;
+	}
+}
+
+@media screen and (orientation:portrait) {
+	main#titlescreen {
+		width:100%;
+	}
+}
+
+@media screen and (orientation:portrait) {
+	main#titlescreen section#splash img.no_scale {
+		max-width:100%;
+	}
+}
+
+main#titlescreen h1,
+main#titlescreen h2 {
+	font-size:1em;
+	margin:0 1em;
+	text-align:center;
+	text-transform:uppercase;
+}
+main#titlescreen h1 {
+	font-style:italic;
+}
+main#titlescreen h2 {}
+main#titlescreen h3 {
+	margin:0;
+}
+
+main#titlescreen header,
+main#titlescreen hr,
+main#titlescreen section {
+	margin:2px 0;
+	padding:0;
+}
+
+main#titlescreen hr {
+	height:3px;
+}
+
+main#titlescreen section#credit {}
+
+main#titlescreen section#notes ul {
+	margin:0;
+}
+
+main#titlescreen section#splash {
+	padding:0;
+	text-align:center;
+}
+
+/*	-	-	-	-	-	-	-	-	-	-	-	-	-	-
+	Some generic manipulation classes
+
+	Use these to easily rotate, flip, etc., images
+*/
+
+/*	Rotate elements. Mostly for 'tiles'?	*/
+.rotate_90	{transform:rotate(90deg);}
+.rotate_180	{transform:rotate(180deg);}
+.rotate_270	{transform:rotate(270deg);}
+
+/*	Flip image	*/
+.flip_h	{transform: scaleX(-1);}
+.flip_v	{transform: scaleY(-1);}
+
+/*	Round images	*/
+.shape_circle {border-radius:50%;}
+
+/*	Align elements.	*/
+.align_top		{text-align:top;}
+.align_right	{text-align:right;}
+.align_bottom	{text-align:bottom;}
+.align_left		{text-align:left;}
+.align_hcenter	{text-align:center;}
+/*.align_vcenter	{ display:inline-block; vertical-align:middle; }	FIXME	*/
+
+/*	Keep image's original size	*/
+.no_scale {
+	height:auto;
+	width:auto;
+}
+
+/*	Undoes indentation on board cell	*/
+.empty {
+	background-image:none!important;
+	border:none!important;
+}
+
+/*	Animation
+
+	Use these classes to apply simple animated effects.
+
+	Only applied if user has not set their browser or
+	operating system to reduce animation / motion
+	See: https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion
+*/
+
+@media (prefers-reduced-motion: no-preference) {
+
+	/*	Blink	*/
+	.blink {
+		animation-name:blink;
+		animation-duration:0.4s;
+		animation-timing-function:step-start;
+		animation-iteration-count:infinite;
+	}
+	@keyframes blink {
+		50% { opacity:0; }
+	}
+
+	/*	Colour cycle
+		Might add different flavours later?
+	*/
+	.cycle{
+		animation-name:cycle;
+		animation-duration:0.2s;
+		animation-timing-function:linear;
+		animation-iteration-count:infinite;
+	}
+	@keyframes cycle {
+		0%		{ color:#ff55ff; }
+		20%		{ color:#ffffff; }
+		40%		{ color:#55ff55; }
+		60%		{ color:#ffff55; }
+		80%		{ color:#0000aa; }
+		100%	{ color:#aa0000; }
+	}
+
+	/*	Flip
+		Simple animation by flipping image	*/
+	.flipanim_h {
+		transform:scaleX(+1);
+		animation-name:flipanim_h;
+		animation-duration:0.8s;
+		animation-timing-function:step-start;
+		animation-iteration-count:infinite;
+	}
+	@keyframes flipanim_h {
+		50% { transform:scaleX(-1); }
+	}
+
+	/*	Rotate	*/
+	.rotateanim_cw {
+		animation-name:rotateanim_cw;
+		animation-duration:2s;
+		animation-timing-function:step-start;
+		animation-iteration-count:infinite;
+	}
+	@keyframes rotateanim_cw {
+		25%		{ transform:rotate(90deg); }
+		50%		{ transform:rotate(180deg); }
+		75%		{ transform:rotate(270deg); }
+	}
+	.rotateanim_ccw {
+		animation-name:rotateanim_ccw;
+		animation-duration:2s;
+		animation-timing-function:step-start;
+		animation-iteration-count:infinite;
+	}
+	@keyframes rotateanim_ccw {
+		25%		{ transform:rotate(-90deg); }
+		50%		{ transform:rotate(-180deg); }
+		75%		{ transform:rotate(-270deg); }
+	}
+}

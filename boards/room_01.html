@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+	<head>
+		<meta charset="UTF-8">
+		<title>EXAMPLE GAME - ROOM 001</title>
+		<meta name="author" content="Blueberry Soft">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<base target="message_frame">
+		<link rel="stylesheet" type="text/css" href="../base.css">
+		<script src="../pepito.js"></script>
+		<style>
+			/*	You may wish to relocate some of these to
+				'base.css' if they will be consistant /
+				mostly consistant throughout your game.
+				Anything placed here will override things
+				already set in 'base.css'
+				Have fun with it!
+			*/
+			a {
+				color:white											/*	Hyperlink colour */
+			}
+			body {
+				background-color:lightgray;							/*	main bg colour */
+				background-image:url("../images/background.jpg");	/*	main bg image */
+				color:blue;											/*	main text colour */
+			}
+			section#view section#map section.cell {
+				background-color:lightgray;							/*	board cells bg colour */
+				background-image:url("../images/floor.gif");		/*	board cells bg image */
+			}
+		</style>
+	</head>
+	<body>
+		<main id="board">
+
+	<!--	VIEWPOINT WINDOW	---------------------------------->
+			<section id="view" class="window">
+				<h1>Experience Life</h1>
+				<section id="map">
+				<!--	Row 1	-->
+				<!--	Columns ordered 1-5	-->
+					<section class="cell"></section>
+					<section class="cell"></section>
+					<section class="cell"></section>
+					<section class="cell"></section>
+					<section class="cell"></section>
+				<!--	Row 2	-->
+					<section class="cell"><</section>
+					<section class="cell"></section>
+					<section class="cell"></section>
+					<section class="cell"></section>
+					<section class="cell"></section>
+				<!--	Row 3	-->
+					<section class="cell" id="foodLoc"></section>	
+					<section class="cell"></section>
+					<section class="cell"></section>
+					<section class="cell"></section>
+					<section class="cell">	</section>
+				<!--	Row 4	-->
+					<section class="cell"><img src="../images/wall.jpg" alt="a damp stone wall"></section>
+					<section id="space-1" class="cell"></section>
+					<section id="space-2" class="cell"></section>
+					<section id="space-3" class="cell"></section>
+					<section id="space-4" class="cell"></section>
+				<!--	Row 5	-->
+					<section class="cell"><img src="../images/wall.jpg" alt="a damp stone wall"></section>
+					<section class="cell"><img src="../images/wall.jpg" alt="a damp stone wall"></section>
+					<section class="cell"><img src="../images/wall.jpg" alt="a damp stone wall"></section>
+					<section class="cell"><img src="../images/wall.jpg" alt="a damp stone wall"></section>
+					<section class="cell"><img src="../images/wall.jpg" alt="a damp stone wall"></section>
+				</section>
+			</section>
+
+	<!--	PERCEPTION WINDOW	-------------------------->
+			<section id="perception" class="window">
+				<h2>Pepito's Needs</h2>
+				<section id="senses">
+				<!--	Icons for senses		-->
+					<section class="icon"><img src="../sprites/burrito.png" id="clickBurrito" role="button" tabindex="0" alt="Clickable description" style="cursor: pointer;" /></section>
+					<section class="icon"><img src="../sprites/bed.png" id="clickBed" role="button" tabindex="0" alt="Clickable description" style="cursor: pointer;" ></section>
+					<section class="icon"><img src="../sprites/weed_s.png" id="clickWeedS" role="button" tabindex="0" alt="Clickable description" style="cursor: pointer;" ></section>
+					<section class="icon"><img src="../sprites/weed_i.png" id="clickWeedI" role="button" tabindex="0" alt="Clickable description" style="cursor: pointer;" ></section>
+					<section class="icon"><img src="../sprites/bible.png" id="clickBible" role="button" tabindex="0" alt="Clickable description" style="cursor: pointer;" ></section>
+				<!--	Descriptions for senses	-->
+					<section class="description" id="hunger">HUNGER<br>0/10</br></section>
+					<section class="description" id="sleep">SLEEP<br>0/10</br></section>
+					<section class="description" id="fun">FUN<br>0/10</br></section>
+					<section class="description" id="anger">ANGER<br>0/10</br></section>
+					<section class="description" id="bible">BIBLE<br>0/10</br></section>
+				</section>
+			</section>
+
+	<!--	MESSAGE WINDOW	------------------------------>
+			<section id="message" class="window">
+				<h2>message</h2>
+				<a href="../messages/room_001.txt">&#8632;</a>
+				<iframe name="message_frame" src="../messages/room_001.txt"></iframe>
+			</section>
+
+		</main>
+	</body>
+</html>
